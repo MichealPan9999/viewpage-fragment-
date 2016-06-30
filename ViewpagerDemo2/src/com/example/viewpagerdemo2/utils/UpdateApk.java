@@ -64,7 +64,7 @@ public class UpdateApk {
 	public UpdateApk(Context context, String pkgName) {
 		this.mContext = context;
 		this.mCurrentPkg = pkgName;
-		//mServerVersionUrl 可以自己写一个网址。自己搭建Apache
+		// mServerVersionUrl 可以自己写一个网址。自己搭建Apache
 		this.mServerVersionUrl = SystemProperties.get(
 				"ro.product.launcher.update", "");
 	}

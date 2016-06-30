@@ -2,14 +2,19 @@ package com.example.viewpagerdemo2.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Calendar;
 import java.util.Properties;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
+import com.example.viewpagerdemo2.R;
+
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.text.format.Time;
 import android.util.Log;
 
 public class Utils {
@@ -78,5 +83,22 @@ public class Utils {
         Log.d(TAG, "encode() end");
 
         return result;
+    }
+    public static String getStringTime(String type)
+    {
+    	Time t = new Time();
+    	t.setToNow();
+    	String hour = t.hour < 10?"0"+(t.hour):t.hour+"";
+    	String minute = t.minute < 10 ?"0"+(t.minute):t.minute+"";
+    	return hour+type+minute;
+    }
+    public static String getStringData(Context context)
+    {
+    	final Calendar c = Calendar.getInstance();
+    	c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
+    	String mMonth = String.valueOf(c.get(Calendar.MONTH)+1);
+    	String mDay = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
+    	String mWay = String.valueOf(c.get(Calendar.DAY_OF_WEEK));
+    	String[] monthName = context.getResources().getStringArray(R.array.str_array_month);
     }
 }
